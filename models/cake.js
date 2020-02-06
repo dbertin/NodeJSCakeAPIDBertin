@@ -10,14 +10,14 @@ const cakeSchema = new mongoose.Schema({
     baker: {
         type: String,
         required: true,
-        minn: 8,
+        min: 8,
         max: 300,
     },
     ingredients: {
         type: [String],
         required: true,
         min: 1,
-        enum: ["chocolate", "flour", "gluten free floour", "eggs", "milk", "strawberry", "vanilla", "sugar"],
+        enum: ['chocolate', 'flour', 'gluten free floour', 'eggs', 'milk', 'strawberry', 'vanilla', 'sugar'],
     },
     stock: {
         type: Number,
@@ -26,7 +26,7 @@ const cakeSchema = new mongoose.Schema({
     },
     expirationDate: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     isGlutenFree: {
         type: Boolean,
