@@ -6,8 +6,6 @@ const handlerCakes = require('../handlers/cakes');
 router.route('/')
     .post(handlerCakes.createCake)
     .get(handlerCakes.getAllCakes);
-    // .get(handlerCakes.getOneBaker)
-    // .get(handlerCakes.getAllGluten);
 
 router.route('/:id')
     .get(handlerCakes.getOneCake)

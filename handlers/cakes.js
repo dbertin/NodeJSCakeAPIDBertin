@@ -19,7 +19,6 @@ exports.createCake = async(req, res) => {
 // display all cakes we have
 exports.getAllCakes = async(req, res) => {
     try {
-
         let cakes;
         if (req.query.isGlutenFree !== undefined) {
             cakes = await db.Cake.find(req.query);
@@ -52,42 +51,6 @@ exports.getOneCake = async(req, res) => {
         });
     }
 }
-
-// display all cakes for on baker
-// find by date expiration date
-// display only : cake name, baker, expiration date
-// exports.getOneBaker = async(req, res) => {
-//     try {
-//         console.log(req.query);
-//         let cakesBaker = await db.Stock
-//             .find(req.query)
-//             .sort({ expirationDate: 1}) // ordre : 1= croissant, -1=decroissant
-//             .select({name: 1, baker:1, expirationDate: 1 });
-//             // .sort('expirationDate')
-//             // .select('name baker expirationDate');
-//         return res.status(200).json(cakesBaker);
-//     } catch (err) {
-//         return res.status(400).json({
-//             message: 'Oh no! Could not find your baker and his cakes :/',
-//             error: err,
-//         });
-//     }
-// }
-
-// display all cake with gluten
-// exports.getAllGluten = async(req, res) => {
-//     try {
-//         console.log("getAllGluten");
-//         console.log(req.query);
-//         let cakesGluten = await db.Stock.find(req.query);
-//         return res.status(200).json(cakesGluten);
-//     } catch (err) {
-//         return res.status(400).json({
-//             message: 'Oh no! Could not create your cake :/',
-//             error: err,
-//         });
-//     }
-// }
 
 // Update One cake with his ID
 exports.updateOneCake = async(req, res) => {
