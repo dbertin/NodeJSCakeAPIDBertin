@@ -18,29 +18,19 @@ exports.createCake = async(req, res) => {
 
 // display all cakes we have
 exports.getAllCakes = async(req, res) => {
-    console.log("getAllCakes");
-    console.log(req.query);
-
     try {
-        console.log(req.query.isGlutenFree !== undefined);
 
         let cakes;
         if (req.query.isGlutenFree !== undefined) {
-            cakes = await db.Stock.find(req.query);
+            cakes = await db.Cake.find(req.query);
         } else if (req.query.baker !== undefined) {
-            cakes = await db.Stock
-                .find(req.query)
-                .sort('expirationDate')
-                .select('name baker expirationDate')
+            cakes = await db.Cake
+            .find(req.query)
+            .sort('expirationDate')
+            .select('name baker expirationDate');
         } else {
             cakes = await db.Cake.find();
         }
-
-        // let cakes = req.query
-        //     ? await db.Cake
-        //         .find(req.query)
-        //         .sort('expirationDate')
-        //         .select('name baker expirationDate')
         return res.status(200).json(cakes);
     } catch (err) {
         return res.status(400).json({
